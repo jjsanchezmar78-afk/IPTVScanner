@@ -253,11 +253,11 @@ public class MainActivity extends Activity {
 
         output.setText("Consultando cuenta autorizada...\n");
 
-        executor.execute(() -> {
-            try {
-                host = host.replaceAll("/+$", "");
+final String cleanHost = host.replaceAll("/+$", "");
 
-                String address = host + "/player_api.php?username=" +
+executor.execute(() -> {
+    try {
+        String address = cleanHost + "/player_api.php?username=" +
                         URLEncoder.encode(user, "UTF-8") +
                         "&password=" +
                         URLEncoder.encode(pass, "UTF-8");
